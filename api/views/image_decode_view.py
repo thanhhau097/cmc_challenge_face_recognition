@@ -40,5 +40,4 @@ class ImgDecodeView(APIView):
             # list_res[key] = {'distance': distance, 'bbox_detail': bbox_detail}
         result = {"bbox": bbox, "same_person": same_persons}
 
-
         return json_format(code=200, message=self.success, data=result, errors=None)
