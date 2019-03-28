@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from rest_framework.parsers import MultiPartParser
 from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
-from api.forms.image_decode_form import ImgDecodeForm
+from api.forms.save_form import SaveForm
 from api.helpers.image_decode_helper import decode_base64, get_bbox, get_result
 from api.helpers.response_format import json_format
 
@@ -14,7 +14,7 @@ class SaveView(APIView):
 
     def post(self, request):
         # TODO
-        form = ImgDecodeForm(request.data,)
+        form = SaveForm(request.data,)
         # form = ImgDecodeForm(request.POST, )
         if not form.is_valid():
             return JsonResponse(form.errors, status=422)
