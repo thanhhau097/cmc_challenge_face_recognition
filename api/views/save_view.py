@@ -22,11 +22,11 @@ class SaveView(APIView):
         base64_img = form.cleaned_data.get('base64_img')
         img_name = form.cleaned_data.get('image_name')
 
-        return self._format_response(base64_img)
+        return self._format_response(base64_img, img_name)
 
     def _format_response(self, base64_img, img_name):
         img = decode_base64(base64_img)
-        get_and_save_embedding(image_name=img_name, image=base64_img)
+        get_and_save_embedding(image_name=img_name, image=img)
         res = json_format(code=200, message=self.success, data=1, errors=None)
         return res
         # return json_format(code=500, message=self.failure, data={"result": self.failure}, errors=None)
